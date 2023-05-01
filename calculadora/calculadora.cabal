@@ -26,6 +26,7 @@ source-repository head
 library
   exposed-modules:
       Menu
+      User
   other-modules:
       Paths_calculadora
   hs-source-dirs:
