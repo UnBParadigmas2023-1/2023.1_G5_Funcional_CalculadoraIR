@@ -17,3 +17,8 @@ createUser = User
 saveUser :: User -> IO ()
 saveUser user = appendFile "usuarios.txt" (show user ++ "\n")
 
+readUsers :: IO [User]
+readUsers = do
+    content <- readFile "usuarios.txt"
+    let users = map read (lines content) :: [User]
+    return users
