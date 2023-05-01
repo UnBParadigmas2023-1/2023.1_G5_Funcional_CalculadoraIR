@@ -14,3 +14,6 @@ data User = User {
 createUser :: String -> Double -> Double -> Int -> Double -> Double -> Double -> Double -> User
 createUser = User
 
+saveUser :: User -> IO ()
+saveUser user = appendFile "usuarios.txt" (show user ++ "\n")
+
