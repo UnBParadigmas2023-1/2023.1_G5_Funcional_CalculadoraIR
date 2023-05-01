@@ -11,3 +11,6 @@ data User = User {
     gastoOutros :: Double
 } deriving (Show, Read, Eq)
 
+createUser :: String -> Double -> Double -> Int -> Double -> Double -> Double -> Double -> User
+createUser = User
+
