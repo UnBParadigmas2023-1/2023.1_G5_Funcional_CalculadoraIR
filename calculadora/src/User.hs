@@ -1,3 +1,6 @@
+import Database.Selda
+import Database.Selda.SQLite
+
 module User where
 
 data User = User {
