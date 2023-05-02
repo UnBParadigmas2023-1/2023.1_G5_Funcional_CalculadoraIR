@@ -1,7 +1,7 @@
+module User (User, createUser, saveUser, readUsers) where
+
 import Database.Selda
 import Database.Selda.SQLite
-
-module User where
 
 data User = User {
     nome :: String,
