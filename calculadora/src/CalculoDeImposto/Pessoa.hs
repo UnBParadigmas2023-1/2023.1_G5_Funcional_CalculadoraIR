@@ -7,6 +7,15 @@ data Titular = Titular {
   dedutiveis :: Deducoes
 }
 
+calculoSimples :: Integer -> Float
+calculoSimples rendimento =
+  let limite = 16000
+    in
+      if rendimento <= limite then
+        rendimento * 0.2
+      else -- Rendimento maior que o limite.
+        3200.0
+
 calculaImpostoDevido :: Bool -> Titular -> Float
 calculaImpostoDevido calculoAnual pessoaParaOCalculo =
     let baseDeCalculo = (rendimentosTributaveis pessoaParaOCalculo) - (deducaoTotal calculoAnual (dedutiveis pessoaParaOCalculo)) in
