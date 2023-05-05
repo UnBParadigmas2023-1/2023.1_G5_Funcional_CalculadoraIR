@@ -111,8 +111,15 @@ Criar esta calculadora usando a linguagem Haskell e o paradigma funcional foi um
     * Um dos pontos que a equipe poderia melhorar seria na organização do time, pois houve uma certa dificuldade para o grupo se reunir, com todos presentes.
 * Trabalhos futuros: 
     * Uma boa adição para esse projeto seria utilizar os dados entregues pelo usuário para calcular o valor da restituição do imposto.
+    * Uma possibilidade de melhoria futura estaria na adição de calculo de imposto na forma simplificada, uma vez que a calculadora do grupo utilizou apenas o calculo utilizando as deduções completas.
     * Adicionar uma função que bloqueie a opção do calculo do imposto caso não tenham nenhum dado cadastrado.
 ## Fontes
 
-Referencie, adequadamente, as referências utilizadas.
-Indique ainda sobre fontes de leitura complementares.
+
+> Ministério da Economia (Brasil). Receita Federal. Simulador IRPF [online]. Disponível em: https://www27.receita.fazenda.gov.br/simulador-irpf/. Acesso em: 05 maio 2023.
+
+> Onze. Como calcular Imposto de Renda? [online]. Disponível em: https://www.onze.com.br/blog/calcular-imposto-de-renda/#:~:text=Soma%20dos%20rendimentos%20tribut%C3%A1veis%20%E2%80%93%2020,a%20ser%20quitado%20ou%20restitu%C3%ADdo.. Acesso em: 05 maio 2023.
+
+> The Haskell.org Committee. Haskell Documentation [online]. Disponível em: https://www.haskell.org/documentation/. Acesso em: 05 maio 2023.
+
+> Machado, Andrey. Programação Haskell [online]. Curitiba: Universidade Federal do Paraná, Departamento de Informática, 2006. Disponível em: https://www.inf.ufpr.br/andrey/ci062/ProgramacaoHaskell.pdf. Acesso em: 05 maio 2023.
