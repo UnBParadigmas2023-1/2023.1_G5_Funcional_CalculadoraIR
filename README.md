@@ -37,6 +37,15 @@ Gifs animados e outras ilustrações são bem-vindos!
 **Linguagens**: Haskell<br>
 **Tecnologias**: Haskell<br>
 
+## Execução
+
+Para poder executar o projeto precisa apenas executar o comando:
+
+```bash
+make run
+```
+
+Que irá iniciar o container com o nosso projeto pronto para ser testado.
 
 ## Uso 
 Explique como usar seu projeto.
