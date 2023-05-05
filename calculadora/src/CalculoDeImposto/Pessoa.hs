@@ -26,8 +26,13 @@ calculoSimples rendimento =
 calculaImpostoDevido :: Bool -> Titular -> Float
 calculaImpostoDevido calculoAnual pessoaParaOCalculo =
     let baseDeCalculo = (rendimentosTributaveis pessoaParaOCalculo) - (deducaoTotal calculoAnual (dedutiveis pessoaParaOCalculo)) in
-    if baseDeCalculo <= 1903.98 then 0.0 else
-    if baseDeCalculo <= 2826.65 then baseDeCalculo * 0.075 - 142.80 else
-    if baseDeCalculo <= 3751.05 then baseDeCalculo * 0.15 - 354.80 else
-    if baseDeCalculo <= 4664.68 then baseDeCalculo * 0.225 -636.13 else
-    baseDeCalculo * 0.275 -869.36
+    calculaImpostoDevidoAux baseDeCalculo
+
+calculaImpostoDevidoAux :: Float -> Float
+calculaImpostoDevidoAux baseDeCalculo
+    | baseDeCalculo <= 0 = 0.0
+    | baseDeCalculo <= 1903.98 = 0.0
+    | baseDeCalculo <= 2826.65 = (baseDeCalculo * 0.075 - 142.80) + calculaImpostoDevidoAux (baseDeCalculo - 2826.65)
+    | baseDeCalculo <= 3751.05 = (baseDeCalculo * 0.15 - 354.80) + calculaImpostoDevidoAux (baseDeCalculo - 3751.05)
+    | baseDeCalculo <= 4664.68 = (baseDeCalculo * 0.225 - 636.13) + calculaImpostoDevidoAux (baseDeCalculo - 4664.68)
+    | otherwise = (baseDeCalculo * 0.275 - 869.36) + calculaImpostoDevidoAux (baseDeCalculo - 4664.68)
