@@ -1,74 +1,68 @@
 module Menu (mainMenu) where
-  
+
+import Lib (cadastrarContribuinte, menuImpostoAnual, menuImpostoMensal)
 import System.Console.ANSI
 import System.Exit (exitSuccess)
 
-
-import Lib (cadastrarContribuinte, menuImpostoAnual, menuImpostoMensal)
-
 type MenuOption = String
+
 type MenuFunction = IO ()
+
 type Menu = [(MenuOption, MenuFunction)]
 
-
 mainMenu :: IO ()
-mainMenu = do 
+mainMenu = do
+  withSQLite "database.sqlite" $ do
+    tryCreateTable tabelaContribuinte
 
-    withSQLite "database.sqlite" $ do
-        tryCreateTable tabelaContribuinte
-
-    clearScreen
-    let menu :: Menu
-        menu =
-            [ ("1", cadastrarContribuinte)
-            , ("2", menuImpostoMensal)
-            , ("3", menuImpostoAnual)
-            , ("0", sair)
-            ]
-    showMenu menu
+  clearScreen
+  let menu :: Menu
+      menu =
+        [ ("1", cadastrarContribuinte),
+          ("2", menuImpostoMensal),
+          ("3", menuImpostoAnual),
+          ("0", sair)
+        ]
+  showMenu menu
 
 showMenu :: Menu -> IO ()
 showMenu menu = do
-    putStrLn "Escolha uma opcao:"
-    putStrLn "1 - Cadastrar Contribuinte"
-    putStrLn "2 - Calculo de imposto mensal"
-    putStrLn "3 - Calculo de imposto anual"
-    putStrLn "0 - Sair:"
-  
-    opcao <- getLine
+  putStrLn "Escolha uma opcao:"
+  putStrLn "1 - Cadastrar Contribuinte"
+  putStrLn "2 - Calculo de imposto mensal"
+  putStrLn "3 - Calculo de imposto anual"
+  putStrLn "0 - Sair:"
 
-    case lookup opcao menu of
-        Just f -> do
-            clearScreen
-            f
-            clearScreen
-            showMenu menu
-    
-        Nothing -> do
-            putStrLn "Opcao invalida!"
-            _ <- getChar
-            clearScreen
-            showMenu menu
+  opcao <- getLine
+
+  case lookup opcao menu of
+    Just f -> do
+      clearScreen
+      f
+      clearScreen
+      showMenu menu
+    Nothing -> do
+      putStrLn "Opcao invalida!"
+      _ <- getChar
+      clearScreen
+      showMenu menu
 
 sair :: IO ()
 sair = putStrLn "Saindo do programa." >> exitSuccess
 
-
 -- ============================================================================
 
-
 -- imprimeUsuario :: Int -> Int -> ()
--- imprimeUsuario x y 
+-- imprimeUsuario x y
 --   | x == y = putStrLn "Todos os usuarios foram impressos"
 --   | otherwise = do
-    -- usuario <- getUsuario x -- função de dados, buscar o usuario no banco pelo id
-    -- putStrln $ "ID: " ++ usuario[0]
-    -- putStrLn $ "Nome: " ++ usuario[1]
-    -- imprimeUsuario (x+1) y
+-- usuario <- getUsuario x -- função de dados, buscar o usuario no banco pelo id
+-- putStrln $ "ID: " ++ usuario[0]
+-- putStrLn $ "Nome: " ++ usuario[1]
+-- imprimeUsuario (x+1) y
 
 -- estaEntre :: Ord a => a -> a -> a -> Bool
--- estaEntre x a b = x >= a && x <= b 
-
+-- estaEntre x a b = x >= a && x <= b
 
 -- impostoNaFonte :: String -> Int -> IO ()
 -- impostoNaFonte escolha max_length
@@ -96,7 +90,6 @@ sair = putStrLn "Saindo do programa." >> exitSuccess
 --   | otherwise = do
 --     putStrLn " ID invalido, tente novamente"
 
-
 -- menu :: IO ()
 -- menu = do
 --   clearScreen
@@ -120,23 +113,19 @@ sair = putStrLn "Saindo do programa." >> exitSuccess
 --     "4" -> putStrLn "Saindo..."
 --     _  ->  menu
 
-
-
-
-
 -- submenu1 = do
 --     clearScreen
 --     putStrLn "Digite o nome: "
---     nome <- readName 
+--     nome <- readName
 --     putStrLn "Digite o valor do rendimento tributável anual: "
 --     rendimento <- readDouble
 --     putStrLn "Digite o gasto anual com previdência oficial:  "
 --     gastoPrevidencia <- readDouble
 --     putStrLn "Digite o número de dependentes: "
 --     qtdDependentes <- readInt
---     putStrLn "Digite o gasto anual com pensão alimentícia : "  
+--     putStrLn "Digite o gasto anual com pensão alimentícia : "
 --     pensaoAlimenticia <- readDouble
---     putStrLn "Digite o gasto anual com saúde:" 
+--     putStrLn "Digite o gasto anual com saúde:"
 --     gastoSaude <- readDouble
 --     putStrLn "Digite o gasto anual com educação: "
 --     gastoEducacao <- readDouble
@@ -146,8 +135,6 @@ sair = putStrLn "Saindo do programa." >> exitSuccess
 --     putStrLn "Informações registradas com sucesso.....Pressione qualquer tecla para voltar ao menu"
 --     _ <- getLine
 --     menu
-
-    
 
 -- submenu2 :: IO ()
 -- submenu2 = do
@@ -170,8 +157,7 @@ sair = putStrLn "Saindo do programa." >> exitSuccess
 --         _ -> do
 --           putStrLn "Opcao invalida, retornando ao menu"
 --           menu
-      
-  
+
 --   escolha <- getLine
 --   case escolha of
 --     "1" -> submenu1
@@ -179,7 +165,6 @@ sair = putStrLn "Saindo do programa." >> exitSuccess
 --     "3" -> submenu3
 --     "4" -> putStrLn "Saindo..."
 --     _  ->  menu
-
 
 -- submenu3 :: IO ()
 -- submenu3 = do

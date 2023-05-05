@@ -1,11 +1,11 @@
+module Contrib (Contribuinte (..), inserirContribuinte, listarContribuintes) where
 {-# LANGUAGE DeriveGeneric, OverloadedStrings, OverloadedLabels #-}
-module Contrib (Contribuinte,  salvarContribuinte, listarContribuintes) where
-
 import Database.Selda
 import Database.Selda.SQLite
 
-data Contribuinte = Contribuinte {
-    nome :: String,
+data Contribuinte = Contribuinte {     
+    pid  :: ID Contribuinte
+    nome :: Text,
     rendimento :: Double,
     gastoPrevidencia :: Double,
     qtdDependententes :: Int,
@@ -13,43 +13,16 @@ data Contribuinte = Contribuinte {
     gastoSaude :: Double,
     gastoEducacao :: Double,
     gastoOutros :: Double
-} deriving (Show, Read, Eq)
+  } deriving (Generic, Show)
+instance SqlRow Contribuinte
 
+contribuinte :: Table Contribuinte
+contribuinte = table "contribuinte" [#pid :- autoPrimary]
 
-tabelaContribuinte :: Table Contribuinte
-tabelaContribuinte = table "contribuintes" [#nome :- primary]
+inserirContribuinte :: Contribuinte -> IO ()
+inserirContribuinte novoContribuinte = withSQLite "database.sqlite" $ do
+  insert_ tabelaContribuinte [novoContribuinte]
 
-salvarContribuinte :: Contribuinte -> IO ()
-salvarContribuinte novoContribuinte = withSQLite "database.sqlite" $ do
-    createTable tabelaContribuinte
-    insert_ tabelaContribuinte[novoContribuinte]
-
-listarContribuintes :: IO ()
+listarContribuintes :: IO [Contribuinte]
 listarContribuintes = withSQLite "database.sqlite" $ do
-    let queryContribuintes = do
-        contribuinte <- select tabelaContribuinte
-        return (nome :*: rendimento)
-    contribuintes <- query queryContribuintes
-
-
-
-
--- listarContribuintes :: IO ()
--- listarContribuintes = withSQLite "database.sqlite" $ do
---     contribuintes <- query $ do
---         contribuinte <- select tabelaContribuinte
---         return (nome :*: rendimento)
-
--- listarContribuintes :: IO ()
--- listarContribuintes = query $ do
---     contribuintes <- select tabelaContribuinte
---     return $ (nome contribuintes) :*: (rendimento contribuintes)
-    
-    
-    -- mapM_ print contribuites
-
-    -- listarContribuintes <- query $ do
-    --     contribuintes <- select tabelaContribuinte
-    --     return $ (contribuintes ! #nome :*: contribuintes ! #rendimento )
-    
-    -- liftIO $ print listarContribuintes
+  query $ select tabelaContribuinte
