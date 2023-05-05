@@ -67,21 +67,26 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |  [Kayro César Silva Machado](https://github.com/kayrocesar) |||
 |  [Lucas Lopes Xavier](https://github.com/lucaslop) |||
 |  [Luis Gustavo Ferreira Marques](https://github.com/luisgfmarques) |||
-|  [Mateus Cunha Maia](https://github.com/mateusmaiamaia) |||
+|  [Mateus Cunha Maia](https://github.com/mateusmaiamaia) |Ajudei na implementação do módulo de menu e auxiliei na integração. Além disso contribui com o readme do projeto nos pontos de uso, sobre e outros.| Boa |
 | [Paulo Goncalves Lima](https://github.com/PauloGoncalvesLima) |||
 | [Thalisson Alves Gonçalves de Jesus](https://github.com/Thalisson-Alves) |||
 | [Victor Hugo Siqueira Costa](https://github.com/8ifq3) |||
-
+ 
 ## Outros 
-Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
+Criar esta calculadora usando a linguagem Haskell e o paradigma funcional foi uma ótima experiência para a equipe. Usando uma abordagem funcional, você pode criar soluções mais elegantes e compreensíveis, reduzindo a probabilidade de erros e comportamento indesejado do programa. Além disso, a linguagem Haskell, com seus tipos fortes e ênfase em funções, oferece uma experiência de programação mais robusta e segura. Apesar de haver alguns pontos a serem melhorados, tanto no projeto como no grupo, o resultado final foi bastante satisfatório para os membros no geral. Os principais pontos do projeto estão listados abaixo:
 
-(i) Lições Aprendidas;
+* Lições aprendidas: 
+    * A linguagem Haskell básica foi a primeira lição aprendida pelo grupo, visto que, a maior parte do grupo nunca tinham trabalhado com ela. 
+    * O projeto nos deu uma boa noção de como utilizar um paradigma funcional para solucionar problemas dentro da área de programação.
+* Percepções:
+    * A percepção mais importante, que o grupo teve durante a realização do trabalho, foi a de resolver os problemas utilizando a modularização, proporcionado pelo paradigma funcional.  
 
-(ii) Percepções;
-
-(iii) Contribuições e Fragilidades, e
-
-(iV) Trabalhos Futuros.
+* Contribuições e Fragilidades: 
+    * A organizou bem como seria realizado o trabalho, cada trio ficou responsável por um módulo (menu, dados e cálculo) e no final todos se juntaram para fazer a integração.
+    * Um dos pontos que a equipe poderia melhorar seria na organização do time, pois houve uma certa dificuldade para o grupo se reunir, com todos presentes.
+* Trabalhos futuros: 
+    * Uma boa adição para esse projeto seria utilizar os dados entregues pelo usuário para calcular o valor da restituição do imposto.
+    * Adicionar uma função que bloqueie a opção do calculo do imposto caso não tenham nenhum dado cadastrado.
 
 ## Fontes
 
