@@ -1,13 +1,13 @@
-import Deducoes
-
 module Pessoa where
 
-data Titular = Titular { 
-  rendimentosTributaveis :: Float,
-  dedutiveis :: Deducoes
-}
+import Deducao
 
-calculoSimples :: Integer -> Float
+data Titular = Titular { 
+  rendimentosTributaveis :: Double,
+  dedutiveis :: Deducoes
+} deriving (Show)
+
+calculoSimples :: Double -> Double
 calculoSimples rendimento =
   let limite = 16000
     in
@@ -16,7 +16,7 @@ calculoSimples rendimento =
       else -- Rendimento maior que o limite.
         3200.0
 
-calculaImpostoDevido :: Bool -> Titular -> Float
+calculaImpostoDevido :: Bool -> Titular -> Double
 calculaImpostoDevido calculoAnual pessoaParaOCalculo =
     let baseDeCalculo = (rendimentosTributaveis pessoaParaOCalculo) - (deducaoTotal calculoAnual (dedutiveis pessoaParaOCalculo)) in
     if baseDeCalculo <= 1903.98 then 0.0 else

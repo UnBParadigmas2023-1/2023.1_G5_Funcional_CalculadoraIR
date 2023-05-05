@@ -4,20 +4,20 @@ import Database.Selda
 import Database.Selda.SQLite
 
 data Contribuinte = Contribuinte {     
-    pid  :: ID Contribuinte,
+    -- pid  :: ID Contribuinte,
     nome :: Text,
     rendimento :: Double,
     gastoPrevidencia :: Double,
-    qtdDependententes :: Int,
+    qtdDependententes :: Integer,
     pensaoAlimenticia :: Double,
     gastoSaude :: Double,
     gastoEducacao :: Double,
     gastoOutros :: Double
-  } deriving (Show)
+  } deriving (Show, Read)
 
-criaContribuinte :: Text -> Double -> Double -> Int -> Double -> Double -> Double -> Double -> Contribuinte
+criaContribuinte :: Text -> Double -> Double -> Integer -> Double -> Double -> Double -> Double -> Contribuinte
 criaContribuinte nome rendimento gastoPrevidencia qtdDependententes pensaoAlimenticia gastoSaude gastoEducacao gastoOutros = Contribuinte {
-    pid = def,
+    -- pid = def,
     nome = nome,
     rendimento = rendimento,
     gastoPrevidencia = gastoPrevidencia,
@@ -27,6 +27,16 @@ criaContribuinte nome rendimento gastoPrevidencia qtdDependententes pensaoAlimen
     gastoEducacao = gastoEducacao,
     gastoOutros = gastoOutros
   }
+
+
+savaContribuinteArquivo :: Contribuinte -> IO ()
+savaContribuinteArquivo contribuinte = appendFile "contribuintes.txt" (show contribuinte ++ "\n")
+
+lerContribuintesArquivo :: IO [Contribuinte]
+lerContribuintesArquivo = do
+  content <- readFile "contribuintes.txt"
+  let contribuintes = map read (lines content)
+  return contribuintes
 
 -- instance SqlRow Contribuinte
 
