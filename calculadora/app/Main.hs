@@ -1,10 +1,7 @@
-module Main(
-    main
-) where
+module Main (main) where
 
-import Menu
-
+import Menu (mainMenu)
 
 
 main :: IO ()
-main = menu
+main = mainMenu
