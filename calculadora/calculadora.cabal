@@ -31,6 +31,7 @@ executable calculadora-exe
     , MenuImposto
     , Contribuinte
     , Menu
+    , Contrib
     , Paths_calculadora
   hs-source-dirs:
       app

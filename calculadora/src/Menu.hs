@@ -14,7 +14,7 @@ type Menu = [(MenuOption, MenuFunction)]
 mainMenu :: IO ()
 mainMenu = do 
 
-    withSQLite "database.db" $ do
+    withSQLite "database.sqlite" $ do
         tryCreateTable tabelaContribuinte
 
     clearScreen

@@ -1,6 +1,6 @@
 module Contribuinte (cadastrarContribuinte) where
 import Util(readDouble, readInt, readName)
-
+import Contrib (Contribuinte,  salvarContribuinte, listarContribuintes)
 
 
 cadastrarContribuinte :: IO ()
@@ -24,6 +24,18 @@ cadastrarContribuinte = do
     gastoOutros <- readDouble
 
 
-    salvarContribuinte(pack nome) redimento
+    Contribuinte novoContribuinte = (
+        nome,
+        rendimento,
+        gastoPrevidencia,
+        qtdDependenten,
+        pensaoAlimenticia,
+        gastoSaude,
+        gastoEducacao,
+        gastoOutro
+    )
+
+    salvarContribuinte novoContribuinte
+    putStrLn "Contribuinte cadastrado com sucesso!"
 
     return()
