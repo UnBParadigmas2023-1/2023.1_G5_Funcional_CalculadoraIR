@@ -12,12 +12,23 @@ extra-source-files:
 description: Please see the README on GitHub at <https://github.com/githubuser/calculadora#readme>
 
 dependencies:
-  - ansi-terminal
-  - base >=4.7 && <5
-  - mtl
-  - selda
-  - selda-postgresql
-  - selda-sqlite
+- base >= 4.7 && < 5
+- ansi-terminal
+- mtl
+- selda
+- selda-postgresql
+- selda-sqlite
+
+ghc-options:
+- -Wall
+- -Wcompat
+- -Widentities
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wmissing-export-lists
+- -Wmissing-home-modules
+- -Wpartial-fields
+- -Wredundant-constraints
 
 library:
   exposed-modules:

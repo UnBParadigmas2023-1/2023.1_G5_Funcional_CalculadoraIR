@@ -1,13 +1,14 @@
 module Contribuinte (cadastrarContribuinte) where
 
-import Contrib (Contribuinte, inserirContribuinte, listarContribuintes)
+import Contrib (Contribuinte, criaContribuinte) --, inserirContribuinte, listarContribuintes)
 import Util (readDouble, readInt, readName)
+import Data.Text (pack)
 
 cadastrarContribuinte :: IO ()
 cadastrarContribuinte = do
   contribuinte <- lerContribuinte
-  inserirArquivo contribuinte
-  inserirContribuinte contribuinte
+  -- inserirArquivo contribuinte
+  -- inserirContribuinte contribuinte
 
   putStrLn "Contribuinte cadastrado com sucesso."
 
@@ -30,6 +31,5 @@ lerContribuinte = do
   putStrLn "Digite o gasto anual com educação: "
   gastoEducacao <- readDouble
   putStrLn "Digite o gasto anual total com outras despesas dedutíveis:  (Para mais informações consulte IN RFB nº 1500, de 2014)"
-  gastoOutros <- readDouble
 
-  return [Contribuinte nome rendimento gastoPrevidencia qtdDependenten pensaoAlimenticia gastoSaude gastoEducacao gastoOutro]
+  criaContribuinte (pack nome) rendimento gastoPrevidencia qtdDependentes pensaoAlimenticia gastoSaude gastoEducacao <$> readDouble

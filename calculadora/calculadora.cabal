@@ -37,7 +37,6 @@ executable calculadora-exe
     , ansi-terminal
     , selda
     , selda-sqlite
-    , selda-postgresql
     , mtl
     , text
   default-language: Haskell2010

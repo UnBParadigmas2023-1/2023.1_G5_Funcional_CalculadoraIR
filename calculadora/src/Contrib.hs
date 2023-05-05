@@ -1,10 +1,10 @@
-module Contrib (Contribuinte (..), inserirContribuinte, listarContribuintes) where
+module Contrib  where
 {-# LANGUAGE DeriveGeneric, OverloadedStrings, OverloadedLabels #-}
 import Database.Selda
 import Database.Selda.SQLite
 
 data Contribuinte = Contribuinte {     
-    pid  :: ID Contribuinte
+    pid  :: ID Contribuinte,
     nome :: Text,
     rendimento :: Double,
     gastoPrevidencia :: Double,
@@ -13,16 +13,30 @@ data Contribuinte = Contribuinte {
     gastoSaude :: Double,
     gastoEducacao :: Double,
     gastoOutros :: Double
-  } deriving (Generic, Show)
-instance SqlRow Contribuinte
+  } deriving (Show)
 
-contribuinte :: Table Contribuinte
-contribuinte = table "contribuinte" [#pid :- autoPrimary]
+criaContribuinte :: Text -> Double -> Double -> Int -> Double -> Double -> Double -> Double -> Contribuinte
+criaContribuinte nome rendimento gastoPrevidencia qtdDependententes pensaoAlimenticia gastoSaude gastoEducacao gastoOutros = Contribuinte {
+    pid = def,
+    nome = nome,
+    rendimento = rendimento,
+    gastoPrevidencia = gastoPrevidencia,
+    qtdDependententes = qtdDependententes,
+    pensaoAlimenticia = pensaoAlimenticia,
+    gastoSaude = gastoSaude,
+    gastoEducacao = gastoEducacao,
+    gastoOutros = gastoOutros
+  }
 
-inserirContribuinte :: Contribuinte -> IO ()
-inserirContribuinte novoContribuinte = withSQLite "database.sqlite" $ do
-  insert_ tabelaContribuinte [novoContribuinte]
+-- instance SqlRow Contribuinte
 
-listarContribuintes :: IO [Contribuinte]
-listarContribuintes = withSQLite "database.sqlite" $ do
-  query $ select tabelaContribuinte
+-- contribuinte :: Table Contribuinte
+-- contribuinte = table "contribuinte" [#pid :- autoPrimary]
+
+-- inserirContribuinte :: Contribuinte -> IO ()
+-- inserirContribuinte novoContribuinte = withSQLite "database.sqlite" $ do
+--   insert_ tabelaContribuinte [novoContribuinte]
+
+-- listarContribuintes :: IO [Contribuinte]
+-- listarContribuintes = withSQLite "database.sqlite" $ do
+--   query $ select tabelaContribuinte
