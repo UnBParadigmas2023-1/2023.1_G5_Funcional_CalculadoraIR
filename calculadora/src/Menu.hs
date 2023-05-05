@@ -39,6 +39,7 @@ showMenu menu = do
     Just f -> do
       clearScreen
       f
+      _ <- getChar
       clearScreen
       showMenu menu
     Nothing -> do

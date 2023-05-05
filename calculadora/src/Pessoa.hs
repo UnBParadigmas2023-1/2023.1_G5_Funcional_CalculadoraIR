@@ -1,11 +1,11 @@
-import Deducoes
-
 module Pessoa where
 
+import Deducao
+
 data Titular = Titular { 
-  rendimentosTributaveis :: Float,
+  rendimentosTributaveis :: Double,
   dedutiveis :: Deducoes
-}
+} deriving (Show)
 
 
 baseCalculoImpostoSimples :: Float -> Float
@@ -20,7 +20,7 @@ deducaoTotal calculoAnual deducao
     | calculoAnual = deducao
     | otherwise = deducao / 12.0
 
-calculaImpostoDevido :: Bool -> Titular -> Float
+calculaImpostoDevido :: Bool -> Titular -> Double
 calculaImpostoDevido calculoAnual pessoaParaOCalculo =
     let baseDeCalculo = (rendimentosTributaveis pessoaParaOCalculo) - (deducaoTotal calculoAnual (dedutiveis pessoaParaOCalculo)) in
     calculaImpostoDevidoAux baseDeCalculo
