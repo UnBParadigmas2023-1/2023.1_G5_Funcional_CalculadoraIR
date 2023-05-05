@@ -6,6 +6,7 @@ import Pessoa (Titular(Titular, rendimentosTributaveis, dedutiveis), calculaImpo
 import Deducao (Deducoes(Deducoes, previdenciaOficial, quantidadeDeDependentes, despesaComInstrucao, despesaMedica, pensaoAlimenticiaDeducao, outrasDeducoes))
 
 
+
 data TipoImposto = Mensal | Anual deriving (Show, Read, Eq)
 
 

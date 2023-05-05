@@ -3,7 +3,7 @@ module Contrib  where
 import Database.Selda
 import Database.Selda.SQLite
 
-data Contribuinte = Contribuinte {     
+data Contribuinte = Contribuinte {
     nome :: Text,
     rendimento :: Double,
     gastoPrevidencia :: Double,
@@ -26,7 +26,6 @@ criaContribuinte nome rendimento gastoPrevidencia qtdDependententes pensaoAlimen
     gastoEducacao = gastoEducacao,
     gastoOutros = gastoOutros
   }
-
 
 savaContribuinteArquivo :: Contribuinte -> IO ()
 savaContribuinteArquivo contribuinte = appendFile "contribuintes.txt" (show contribuinte ++ "\n")
