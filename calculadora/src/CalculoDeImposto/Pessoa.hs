@@ -11,17 +11,8 @@ data Titular = Titular {
 baseCalculoImpostoSimples :: Float -> Float
 baseCalculoImpostoSimples rendimentosTributaveis =
   let baseDeCalculo = rendimentosTributaveis - (rendimentosTributaveis * 0.2) in
-  if rendimentosTributaveis * 0.2 <= 16754.34 then baseDeCalculo else
-  rendimentosTributaveis - 16754.34
-
-calculoSimples :: Integer -> Float
-calculoSimples rendimento =
-  let limite = 16000
-    in
-      if rendimento <= limite then
-        rendimento * 0.2
-      else -- Rendimento maior que o limite.
-        3200.0
+  if rendimentosTributaveis * 0.2 <= 16754.34 then calculaImpostoDevidoAux baseDeCalculo else
+  calculaImpostoDevidoAux rendimentosTributaveis - 16754.34
 
 calculaImpostoDevido :: Bool -> Titular -> Float
 calculaImpostoDevido calculoAnual pessoaParaOCalculo =
