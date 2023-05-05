@@ -7,6 +7,13 @@ data Titular = Titular {
   dedutiveis :: Deducoes
 }
 
+
+baseCalculoImpostoSimples :: Float -> Float
+baseCalculoImpostoSimples rendimentosTributaveis =
+  let baseDeCalculo = rendimentosTributaveis * 0.2 in
+  if baseDeCalculo <= 16754.34 then baseDeCalculo else
+  16754.34
+
 calculoSimples :: Integer -> Float
 calculoSimples rendimento =
   let limite = 16000
