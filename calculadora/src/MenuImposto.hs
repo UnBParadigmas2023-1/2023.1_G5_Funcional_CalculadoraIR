@@ -6,37 +6,53 @@ import Pessoa (Titular(Titular, rendimentosTributaveis, dedutiveis), calculaImpo
 import Deducao (Deducoes(Deducoes, previdenciaOficial, quantidadeDeDependentes, despesaComInstrucao, despesaMedica, pensaoAlimenticiaDeducao, outrasDeducoes))
 
 
-menuImpostoMensal :: IO ()
-menuImpostoMensal = do
-  -- max_length <- getUsuariosLength -- pegas quantidade de usuarios, funcionalidade de dados
-  putStrLn "---------------------------------"
-  putStrLn "Selecione o ID do usuario que deseja calcular o imposto de renda mensal,ou digite - para sair"
 
+data TipoImposto = Mensal | Anual deriving (Show, Read, Eq)
+
+
+calculaImpostPorTipo :: TipoImposto -> IO ()
+calculaImpostPorTipo tipo = do
+  let eAnual = tipo == Anual
+
+  putStrLn "---------------------------------"
   contribuintes <- lerContribuintesArquivo
   printContribuintes contribuintes
   putStrLn "---------------------------------"
   opcao <- getLine
-  -- case opcao of
-  let contribuinte = encontraContribuintePorNome (pack opcao) contribuintes
-  case contribuinte of
-    Nothing -> do
-      putStrLn "Contribuinte nao encontrado"
-      menuImpostoMensal
-    Just contribuinte -> do
-      let titular = Titular {
-        rendimentosTributaveis = rendimento contribuinte,
-        dedutiveis = Deducoes {
-          previdenciaOficial = gastoPrevidencia contribuinte,
-          quantidadeDeDependentes = qtdDependententes contribuinte,
-          despesaComInstrucao = gastoEducacao contribuinte,
-          despesaMedica = gastoSaude contribuinte,
-          pensaoAlimenticiaDeducao = pensaoAlimenticia contribuinte,
-          outrasDeducoes = gastoOutros contribuinte
-        }
-      }
-      let x = calculaImpostoDevido False titular
-      print x
-      print contribuinte
+  case opcao of
+    "-" -> putStrLn "Saindo..."
+    opcao -> do
+      let contribuinteEscolhido = encontraContribuintePorNome (pack opcao) contribuintes
+      case contribuinteEscolhido of
+        Nothing -> do
+          putStrLn "Contribuinte nao encontrado"
+          menuImpostoMensal
+        Just contribuinte -> do
+          let titular = Titular {
+            rendimentosTributaveis = rendimento contribuinte,
+            dedutiveis = Deducoes {
+              previdenciaOficial = gastoPrevidencia contribuinte,
+              quantidadeDeDependentes = qtdDependententes contribuinte,
+              despesaComInstrucao = gastoEducacao contribuinte,
+              despesaMedica = gastoSaude contribuinte,
+              pensaoAlimenticiaDeducao = pensaoAlimenticia contribuinte,
+              outrasDeducoes = gastoOutros contribuinte
+            }
+          }
+          let impostoDevido = calculaImpostoDevido eAnual titular
+          putStrLn $ "Imposto devido: " ++ show impostoDevido
+          putStrLn "Deseja calcular o imposto de outro contribuinte? (s/n)"
+
+          escolha <- getLine
+          case escolha of
+            "s" -> menuImpostoMensal
+            _ -> putStrLn "Retornando ao menu"
+
+
+menuImpostoMensal :: IO ()
+menuImpostoMensal = do
+  putStrLn "Digite o nome do contribuinte que deseja calcular o imposto de renda mensal, ou digite - para sair"
+  calculaImpostPorTipo Mensal
 
 
 printContribuintes :: [Contribuinte] -> IO ()
@@ -56,23 +72,5 @@ encontraContribuintePorNome n (x:xs)
 
 menuImpostoAnual :: IO ()
 menuImpostoAnual = do
-  -- max_length <- getUsuariosLength -- pegas quantidade de usuarios, funcionalidade de dados
-  putStrLn "---------------------------------"
-  putStrLn "Selecione o ID do usuario que deseja calcular o imposto de renda anual,ou digite 0 para sair"
-
--- -- imprimeUsuario 0 max_length
--- putStrLn "---------------------------------"
--- opcao <- getLine
-
--- case opcao of
---   "0" -> menu
---   _ -> do
---     -- impostoTotal opcao max_length
---     putStrLn "Gostaria de calcular o imposto de renda de outro usuario? (s/n)"
---     escolha <- getLine
---     case escolha of
---       "s" -> menuImpostoAnual
---       "n" -> menu
---       _ -> do
---         putStrLn "Opcao invalida, retornando ao menu"
---         menu
+  putStrLn "Digite o nome do contribuinte que deseja calcular o imposto de renda anual, ou digite - para sair"
+  calculaImpostPorTipo Anual

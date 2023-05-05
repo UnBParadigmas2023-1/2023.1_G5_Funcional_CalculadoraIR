@@ -22,11 +22,9 @@
 
 ## Sobre 
 
-Este software é um sistema para cálculo de imposto de renda de 
-pessoa física considerando os rendimentos tributáveis e as deduções legais para cada faixa de cálculo de imposto.
+O projeto consiste em uma calculadora de imposto de renda que tem a capacidade de ler os rendimentos tributáveis de uma pessoa física pessoa física e imprime o valor do imposto, que será calculado, no terminal. A calculadora tem duas funções, uma para o calculo do imposto mensal e outra para o anual.
 
-## Screenshots
-Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
+
 
 ## Instalação 
 
@@ -48,9 +46,26 @@ make run
 Que irá iniciar o container com o nosso projeto pronto para ser testado.
 
 ## Uso 
-Explique como usar seu projeto.
-Procure ilustrar em passos, com apoio de telas do software, seja com base na interface gráfica, seja com base no terminal.
-Nessa seção, deve-se revelar de forma clara sobre o funcionamento do software.
+
+Ao iniciar o programa utilizando os tutorial de execução, o programa será aberto e será mostrado no terminal para o usuário a seguinte tela:
+
+
+“Mostrar tela de inicio"
+
+
+
+Na opção 1 o usuário irá informar no programa alguns dados necessários para calcular o imposto, como na imagem abaixo:
+
+“mostrar imagem da tela da opção 1”  
+
+Tanto a opção 2 como a opção 3 servem para calcular o imposto, mensal e anual, respectivamente, porem para realizar esses cálculos, será necessário que o usuário realize o cadastro primeiro.
+
+
+“Mostrar imagem do calculo do imposto 2 e 3”
+
+E por fim, a opção 0 serve para o usuário encerrar o programa.
+
+“Mostrar imagem de saída ”
 
 ## Vídeo
 Adicione 1 ou mais vídeos com a execução do projeto.Procure: 
@@ -72,27 +87,39 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
 | [Flávio Vieira Leão](https://github.com/flaviovl) |||
-|  [Gabrielle Ribeiro Gomes](https://github.com/Gabrielle-Ribeiro) |||
-|  [Kayro César Silva Machado](https://github.com/kayrocesar) |||
-|  [Lucas Lopes Xavier](https://github.com/lucaslop) |||
-|  [Luis Gustavo Ferreira Marques](https://github.com/luisgfmarques) |||
-|  [Mateus Cunha Maia](https://github.com/mateusmaiamaia) |||
+| [Gabrielle Ribeiro Gomes](https://github.com/Gabrielle-Ribeiro) |||
+| [Kayro César Silva Machado](https://github.com/kayrocesar) |||
+| [Lucas Lopes Xavier](https://github.com/lucaslop) |||
+| [Luis Gustavo Ferreira Marques](https://github.com/luisgfmarques) |||
+| [Mateus Cunha Maia](https://github.com/mateusmaiamaia) |||
 | [Paulo Goncalves Lima](https://github.com/PauloGoncalvesLima) |||
 | [Thalisson Alves Gonçalves de Jesus](https://github.com/Thalisson-Alves) |||
 | [Victor Hugo Siqueira Costa](https://github.com/8ifq3) |||
 
 ## Outros 
-Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
+Criar esta calculadora usando a linguagem Haskell e o paradigma funcional foi uma ótima experiência para a equipe. Usando uma abordagem funcional, você pode criar soluções mais elegantes e compreensíveis, reduzindo a probabilidade de erros e comportamento indesejado do programa. Além disso, a linguagem Haskell, com seus tipos fortes e ênfase em funções, oferece uma experiência de programação mais robusta e segura. Apesar de haver alguns pontos a serem melhorados, tanto no projeto como no grupo, o resultado final foi bastante satisfatório para os membros no geral. Os principais pontos do projeto estão listados abaixo:
 
-(i) Lições Aprendidas;
+* Lições aprendidas: 
+    * A linguagem Haskell básica foi a primeira lição aprendida pelo grupo, visto que, a maior parte do grupo nunca tinham trabalhado com ela.
+    * Utilização de funções recursivas na criação do projeto. 
+    * O projeto nos deu uma boa noção de como utilizar um paradigma funcional para solucionar problemas dentro da área de programação.
+* Percepções:
+    * A percepção mais importante, que o grupo teve durante a realização do trabalho, foi a de resolver os problemas utilizando a modularização, proporcionado pelo paradigma funcional. 
 
-(ii) Percepções;
-
-(iii) Contribuições e Fragilidades, e
-
-(iV) Trabalhos Futuros.
-
+* Contribuições e Fragilidades: 
+    * A organizou bem como seria realizado o trabalho, cada trio ficou responsável por um módulo (menu, dados e cálculo) e no final todos se juntaram para fazer a integração.
+    * Um dos pontos que a equipe poderia melhorar seria na organização do time, pois houve uma certa dificuldade para o grupo se reunir, com todos presentes.
+* Trabalhos futuros: 
+    * Uma boa adição para esse projeto seria utilizar os dados entregues pelo usuário para calcular o valor da restituição do imposto.
+    * Uma possibilidade de melhoria futura estaria na adição de calculo de imposto na forma simplificada, uma vez que a calculadora do grupo utilizou apenas o calculo utilizando as deduções completas.
+    * Adicionar uma função que bloqueie a opção do calculo do imposto caso não tenham nenhum dado cadastrado.
 ## Fontes
 
-Referencie, adequadamente, as referências utilizadas.
-Indique ainda sobre fontes de leitura complementares.
+
+> Ministério da Economia (Brasil). Receita Federal. Simulador IRPF [online]. Disponível em: https://www27.receita.fazenda.gov.br/simulador-irpf/. Acesso em: 05 maio 2023.
+
+> Onze. Como calcular Imposto de Renda? [online]. Disponível em: https://www.onze.com.br/blog/calcular-imposto-de-renda/#:~:text=Soma%20dos%20rendimentos%20tribut%C3%A1veis%20%E2%80%93%2020,a%20ser%20quitado%20ou%20restitu%C3%ADdo.. Acesso em: 05 maio 2023.
+
+> The Haskell.org Committee. Haskell Documentation [online]. Disponível em: https://www.haskell.org/documentation/. Acesso em: 05 maio 2023.
+
+> Machado, Andrey. Programação Haskell [online]. Curitiba: Universidade Federal do Paraná, Departamento de Informática, 2006. Disponível em: https://www.inf.ufpr.br/andrey/ci062/ProgramacaoHaskell.pdf. Acesso em: 05 maio 2023.
