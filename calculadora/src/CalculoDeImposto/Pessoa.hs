@@ -10,9 +10,9 @@ data Titular = Titular {
 
 baseCalculoImpostoSimples :: Float -> Float
 baseCalculoImpostoSimples rendimentosTributaveis =
-  let baseDeCalculo = rendimentosTributaveis * 0.2 in
-  if baseDeCalculo <= 16754.34 then baseDeCalculo else
-  16754.34
+  let baseDeCalculo = rendimentosTributaveis - (rendimentosTributaveis * 0.2) in
+  if rendimentosTributaveis * 0.2 <= 16754.34 then baseDeCalculo else
+  rendimentosTributaveis - 16754.34
 
 calculoSimples :: Integer -> Float
 calculoSimples rendimento =
