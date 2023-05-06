@@ -70,7 +70,7 @@ E por fim, a opção 0 serve para o usuário encerrar o programa.
 
 ## Vídeo
 
-Acesse o vídeo por [aqui](mudar_isso_depois).
+Acesse o vídeo por [aqui](https://youtu.be/DwzGz0Ukdtk).
 
 ## Participações
 
