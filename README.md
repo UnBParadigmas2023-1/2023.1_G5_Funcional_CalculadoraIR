@@ -22,25 +22,28 @@
 
 O projeto consiste em uma calculadora de imposto de renda que tem a capacidade de ler os rendimentos tributáveis de uma pessoa física pessoa física e imprime o valor do imposto, que será calculado, no terminal. A calculadora tem duas funções, uma para o calculo do imposto mensal e outra para o anual.
 
-## Screenshots
-
-Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
-
 ## Instalação
 
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
-Insira um manual ou um script para auxiliar ainda mais.
-Gifs animados e outras ilustrações são bem-vindos!
+Tenha o [Docker](https://docs.docker.com/engine/install/) instalado na sua máquina.
+
 
 **Linguagens**: Haskell<br>
 **Tecnologias**: Haskell<br>
+**Dependências**: Docker e Make<br>
 
 ## Execução
 
-Para poder executar o projeto precisa apenas executar o comando:
+Para poder executar o projeto, baixe o repositório, entre na pasta do repositório e execute o comando:
 
 ```bash
 make run
+```
+
+Caso queira executar direto pelo Docker, execute os seguintes comandos:
+
+```bash
+docker build -t tb1_g5_calculadora_irpf .
+docker run -it --name 2023_1_tb1_g5_calculadora_irpf tb1_g5_calculadora_irpf
 ```
 
 Que irá iniciar o container com o nosso projeto pronto para ser testado.
@@ -50,37 +53,24 @@ Que irá iniciar o container com o nosso projeto pronto para ser testado.
 Ao iniciar o programa utilizando os tutorial de execução, o programa será aberto e será mostrado no terminal para o usuário a seguinte tela:
 
 
-“Mostrar tela de inicio"
+![menu incial](assets/menu-inicial.png)
 
 
 
 Na opção 1 o usuário irá informar no programa alguns dados necessários para calcular o imposto, como na imagem abaixo:
 
-“mostrar imagem da tela da opção 1”  
+![cadastro contribuinte](assets/cadastro-contribuinte.png)
 
 Tanto a opção 2 como a opção 3 servem para calcular o imposto, mensal e anual, respectivamente, porem para realizar esses cálculos, será necessário que o usuário realize o cadastro primeiro.
 
 
-“Mostrar imagem do calculo do imposto 2 e 3”
+![calculo imposto](assets/calculo-imposto.png)
 
 E por fim, a opção 0 serve para o usuário encerrar o programa.
 
-“Mostrar imagem de saída ”
-
 ## Vídeo
 
-Adicione 1 ou mais vídeos com a execução do projeto.Procure:
-
-(i) Introduzir o projeto;
-
-(ii) Mostrar passo a passo o código, explicando-o, e deixando claro o que é de terceiros, e o que é contribuição real da equipe;
-
-(iii) Apresentar particularidades do Paradigma, da Linguagem, e das Tecnologias, e
-
-(iV) Apresentar lições aprendidas, contribuições, pendências, e ideias para trabalhos futuros.
-
-OBS: TODOS DEVEM PARTICIPAR, CONFERINDO PONTOS DE VISTA.
-TEMPO: +/- 15min
+Acesse o vídeo por [aqui](mudar_isso_depois).
 
 ## Participações
 
@@ -112,7 +102,8 @@ Criar esta calculadora usando a linguagem Haskell e o paradigma funcional foi um
 * Trabalhos futuros: 
     * Uma boa adição para esse projeto seria utilizar os dados entregues pelo usuário para calcular o valor da restituição do imposto.
     * Uma possibilidade de melhoria futura estaria na adição de calculo de imposto na forma simplificada, uma vez que a calculadora do grupo utilizou apenas o calculo utilizando as deduções completas.
-    * Adicionar uma função que bloqueie a opção do calculo do imposto caso não tenham nenhum dado cadastrado.
+    * Melhoria no visual.
+
 ## Fontes
 
 
