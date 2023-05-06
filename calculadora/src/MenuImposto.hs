@@ -28,15 +28,16 @@ calculaImpostPorTipo tipo = do
           putStrLn "Contribuinte nao encontrado"
           menuImpostoMensal
         Just contribuinte -> do
+          let fator = if eAnual then 1 else 12
           let titular = Titular {
-            rendimentosTributaveis = rendimento contribuinte,
+            rendimentosTributaveis = rendimento contribuinte / fator,
             dedutiveis = Deducoes {
-              previdenciaOficial = gastoPrevidencia contribuinte,
+              previdenciaOficial = gastoPrevidencia contribuinte / fator,
               quantidadeDeDependentes = qtdDependententes contribuinte,
-              despesaComInstrucao = gastoEducacao contribuinte,
-              despesaMedica = gastoSaude contribuinte,
-              pensaoAlimenticiaDeducao = pensaoAlimenticia contribuinte,
-              outrasDeducoes = gastoOutros contribuinte
+              despesaComInstrucao = gastoEducacao contribuinte / fator,
+              despesaMedica = gastoSaude contribuinte / fator,
+              pensaoAlimenticiaDeducao = pensaoAlimenticia contribuinte / fator,
+              outrasDeducoes = gastoOutros contribuinte / fator
             }
           }
           let impostoDevido = calculaImpostoDevido eAnual titular

@@ -16,17 +16,12 @@ baseCalculoImpostoSimples rendimentosTributaveis =
         then calculaImpostoDevidoAux baseDeCalculo
         else calculaImpostoDevidoAux rendimentosTributaveis - 16754.34
 
-deducaoDoImposto :: Bool -> Double -> Double
-deducaoDoImposto calculoAnual deducao
-  | calculoAnual = deducao
-  | otherwise = deducao / 12.0
-
 calculaImpostoDevido :: Bool -> Titular -> Double
 calculaImpostoDevido calculoAnual pessoaParaOCalculo =
   let baseDeCalculo = rendimentosTributaveis pessoaParaOCalculo - deducaoTotal calculoAnual (dedutiveis pessoaParaOCalculo)
-   in if calculoAnual
-        then calculaImpostoDevidoAnualAux baseDeCalculo
-        else calculaImpostoDevidoAux baseDeCalculo
+  in if calculoAnual
+      then calculaImpostoDevidoAnualAux baseDeCalculo
+      else calculaImpostoDevidoAux baseDeCalculo
 
 calculaImpostoDevidoAux :: Double -> Double
 calculaImpostoDevidoAux baseDeCalculo
