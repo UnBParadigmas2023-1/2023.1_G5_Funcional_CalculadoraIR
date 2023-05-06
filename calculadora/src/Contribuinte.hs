@@ -1,13 +1,13 @@
 module Contribuinte (cadastrarContribuinte) where
 
-import Contrib (Contribuinte, criaContribuinte) --, inserirContribuinte, listarContribuintes)
+import Contrib (Contribuinte, criaContribuinte, savaContribuinteArquivo) --, inserirContribuinte, listarContribuintes)
 import Util (readDouble, readInt, readName)
 import Data.Text (pack)
 
 cadastrarContribuinte :: IO ()
 cadastrarContribuinte = do
   contribuinte <- lerContribuinte
-  -- inserirArquivo contribuinte
+  savaContribuinteArquivo contribuinte
   -- inserirContribuinte contribuinte
 
   putStrLn "Contribuinte cadastrado com sucesso."

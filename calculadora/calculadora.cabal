@@ -28,6 +28,8 @@ executable calculadora-exe
     , Menu
     , Contrib
     , Paths_calculadora
+    , Pessoa
+    , Deducao
   hs-source-dirs:
       app
     , src

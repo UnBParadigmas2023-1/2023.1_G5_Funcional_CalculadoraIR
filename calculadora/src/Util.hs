@@ -12,7 +12,7 @@ readDouble = do
       putStrLn "Entrada inválida. Digite um número válido:"
       readDouble
 
-readInt :: IO Int
+readInt :: IO Integer
 readInt = do
   input <- getLine
   case readMaybe input of

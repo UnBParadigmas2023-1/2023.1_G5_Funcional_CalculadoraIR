@@ -3,21 +3,20 @@ module Contrib  where
 import Database.Selda
 import Database.Selda.SQLite
 
-data Contribuinte = Contribuinte {     
-    pid  :: ID Contribuinte,
+data Contribuinte = Contribuinte {
     nome :: Text,
     rendimento :: Double,
     gastoPrevidencia :: Double,
-    qtdDependententes :: Int,
+    qtdDependententes :: Integer,
     pensaoAlimenticia :: Double,
     gastoSaude :: Double,
     gastoEducacao :: Double,
     gastoOutros :: Double
-  } deriving (Show)
+  } deriving (Show, Read)
 
-criaContribuinte :: Text -> Double -> Double -> Int -> Double -> Double -> Double -> Double -> Contribuinte
+criaContribuinte :: Text -> Double -> Double -> Integer -> Double -> Double -> Double -> Double -> Contribuinte
 criaContribuinte nome rendimento gastoPrevidencia qtdDependententes pensaoAlimenticia gastoSaude gastoEducacao gastoOutros = Contribuinte {
-    pid = def,
+    -- pid = def,
     nome = nome,
     rendimento = rendimento,
     gastoPrevidencia = gastoPrevidencia,
@@ -28,15 +27,11 @@ criaContribuinte nome rendimento gastoPrevidencia qtdDependententes pensaoAlimen
     gastoOutros = gastoOutros
   }
 
--- instance SqlRow Contribuinte
+savaContribuinteArquivo :: Contribuinte -> IO ()
+savaContribuinteArquivo contribuinte = appendFile "contribuintes.txt" (show contribuinte ++ "\n")
 
--- contribuinte :: Table Contribuinte
--- contribuinte = table "contribuinte" [#pid :- autoPrimary]
-
--- inserirContribuinte :: Contribuinte -> IO ()
--- inserirContribuinte novoContribuinte = withSQLite "database.sqlite" $ do
---   insert_ tabelaContribuinte [novoContribuinte]
-
--- listarContribuintes :: IO [Contribuinte]
--- listarContribuintes = withSQLite "database.sqlite" $ do
---   query $ select tabelaContribuinte
+lerContribuintesArquivo :: IO [Contribuinte]
+lerContribuintesArquivo = do
+  content <- readFile "contribuintes.txt"
+  let contribuintes = map read (lines content)
+  return contribuintes
